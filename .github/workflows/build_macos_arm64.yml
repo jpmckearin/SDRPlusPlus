@@ -20,7 +20,8 @@ jobs:
         - name: Install dependencies
           run: brew install cmake pkg-config libusb fftw glfw airspy airspyhf portaudio hackrf libbladerf codec2 zstd autoconf automake libtool && pip3 install mako
 
-        # - name: Fix /usr/local/lib permissions
+        - name: Fix /usr/local/lib permissions
+          run: sudo chmod -R 755 /usr/local
         #   run: sudo chown -R $(whoami) /usr/local && mkdir /usr/local/lib && sudo chown -R $(whoami) /usr/local/lib && mkdir /usr/local/include && sudo chown -R $(whoami) /usr/local/include
         
         - name: Create Build Environment
