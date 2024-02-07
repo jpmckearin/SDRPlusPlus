@@ -21,7 +21,7 @@ jobs:
           run: brew install cmake pkg-config libusb fftw glfw airspy airspyhf portaudio hackrf libbladerf codec2 zstd autoconf automake libtool && pip3 install mako
 
         - name: Fix /usr/local/lib permissions
-          run: sudo chown -R $(whoami) /usr/local && mkdir /usr/local/lib && sudo chown -R $(whoami) /usr/local/lib
+          run: sudo chown -R $(whoami) /usr/local && mkdir /usr/local/lib && sudo chown -R $(whoami) /usr/local/lib && mkdir /usr/local/include && sudo chown -R $(whoami) /usr/local/include
         
         - name: Create Build Environment
           run: cmake -E make_directory ${{runner.workspace}}/build
