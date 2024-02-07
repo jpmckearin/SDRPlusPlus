@@ -1,0 +1,8 @@
+task:
+  name: build_macos_m1
+  macos_instance:
+    # can be a remote or a local virtual machine
+    image: ghcr.io/cirruslabs/macos-sonoma-base:latest
+  build_script: build_m1.sh
+  binary_artifacts:
+    path: build/macos_m1

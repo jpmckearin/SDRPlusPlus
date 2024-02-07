@@ -13,15 +13,15 @@ jobs:
 
         steps:
         - uses: actions/checkout@v4
-        
-        - name: Create Build Environment
-          run: cmake -E make_directory ${{runner.workspace}}/build
-          
+
         - name: Update brew repositories
           run: brew update
 
         - name: Install dependencies
-          run: brew install pkg-config libusb fftw glfw airspy airspyhf portaudio hackrf libbladerf codec2 zstd autoconf automake libtool && pip3 install mako
+          run: brew install cmake pkg-config libusb fftw glfw airspy airspyhf portaudio hackrf libbladerf codec2 zstd autoconf automake libtool && pip3 install mako
+        
+        - name: Create Build Environment
+          run: cmake -E make_directory ${{runner.workspace}}/build
 
         - name: Install volk
           run: git clone --recursive https://github.com/gnuradio/volk && cd volk && mkdir build && cd build && cmake -DCMAKE_OSX_ARCHITECTURES=arm64 -DCMAKE_OSX_DEPLOYMENT_TARGET=10.15 -DCMAKE_BUILD_TYPE=Release .. && make -j3 && sudo make install && cd ../../
